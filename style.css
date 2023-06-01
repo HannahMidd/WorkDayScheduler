@@ -81,3 +81,14 @@ width: 200px;
   font-size: 20px;
   transition: all 0.3s ease-in-out;
 }
+
+/* Used to show/hide the Appointment Added" alert */
+.notification {
+  display: none;
+  padding-bottom: 10px;
+  color: black;
+}
+
+.show {
+  display: block;
+}
