@@ -2,9 +2,9 @@
 
 ## Description
 
-The Coding Quiz game can be accessed at the following URL: https://hannahmidd.github.io/CodingQuiz/
+The Work Day Scheduler can be accessed at the following URL: https://hannahmidd.github.io/WorkDayScheduler/
 
-This coding quiz will allow a users to test their coding knowledge by working through a set of coding questions. Users will have 90 deconds to complete the quiz... but be careful, wrong answers deduct 15 seconds from the clock! 
+This work day scheduler will allow a users to to save events for each hour of the day. Users will be able to view events that are past, present and future to stay on track for the day. Follow the usage instructions below to learn more.  
 
 
 
@@ -14,18 +14,17 @@ N/A
 
 ## Usage
 
-Click "Start Quiz" to begin the game. 
-![Alt Text](./assets/CodingQuizScreenshot.png)
-Read the question and click on the correct answer. 
-![Alt Text](./assets/questionSample.png)
-You will notice feedback ("Correct!" or "Wrong!") after each question is answered. When you get to the end of the game, or run out of time, your final score will appear. 
+Once you have opened the calendar URL, click on the hour box that you would like to create an event for. 
 
-Add your initials where prompted, and click "submit" to add your score to the Highscores page. Come back later to play again, and notice that your previous scores have been stored locally for you! 
+![Alt Text](./assets/calendarscreenshot.png)
 
-Enjoy the game!
+Type in your event details and click the blue "save" icon on the right of your text. 
 
+YYou will notice an alert "Appointment Added to localStorage✔️", meaning that you can come back to this page at any point today to access these details. 
 
+The past events, present events, and future events will be color coded to help users easily asses where they are at in the day. 
 
+Enjoy your new calendar!
 
 ## Credits
 
