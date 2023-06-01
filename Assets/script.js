@@ -1,4 +1,15 @@
+// Wrapping all JS DOM code in a call to jQuery to ensure that the code isn't ran until the browser has finished rendering all the elements in the html
+
 $(document).ready(function() {
+
+  // Variables to use
+  var dayEl = $("#currentDay")
+  var notifyEl = $("#notify")
+  var presentEl = $(".past")
+
+  // Show current day on top of page
+  $("#currentDay").text(dayjs().format('dddd, MMMM D, YYYY'));
+
 
 
 
