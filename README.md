@@ -20,7 +20,7 @@ Once you have opened the calendar URL, click on the hour box that you would like
 
 Type in your event details and click the blue "save" icon on the right of your text. 
 
-YYou will notice an alert "Appointment Added to localStorage✔️", meaning that you can come back to this page at any point today to access these details. 
+YYou will notice an alert "Appointment Added to localStorage✔️", meaning that you can come back to this page at any point today to access these event details. 
 
 The past events, present events, and future events will be color coded to help users easily asses where they are at in the day. 
 
