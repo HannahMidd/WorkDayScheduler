@@ -16,8 +16,6 @@ textarea {
   display: flex;
   flex-direction: row;
   justify-content: center;
-
- 
 }
 .description {
   white-space: pre-wrap;
@@ -35,6 +33,7 @@ textarea {
   background-color: #ffffff;
   color: #000000;
   border-top: 1px dashed #000000;
+  
 }
 
 .past {
@@ -56,7 +55,7 @@ textarea {
 #PresentColor {
   background-color: #ff6961;
   color: white;
-width: 200px;
+  width: 200px;
 }
 
 .future {
@@ -82,7 +81,7 @@ width: 200px;
   transition: all 0.3s ease-in-out;
 }
 
-/* Used to show/hide the Appointment Added" alert */
+/* Used to show/hide the "Appointment Added" alert */
 .notification {
   display: none;
   padding-bottom: 10px;
