@@ -1,3 +1,11 @@
+:root {
+  --PastColor: #2a6f97;
+  --CurrentColor: #468faf;
+  --FutureColor: #89c2d9;
+  --AccentColor: #01497c;
+}
+
+
 body {
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
@@ -37,34 +45,34 @@ textarea {
 }
 
 .past {
-  background-color: #d3d3d3;
+  background-color: var(--PastColor);
   color: white;
 }
 
 #PastColor {
-  background-color: #d3d3d3;
+  background-color: var(--PastColor);
   color: white;
   width: 200px;
 }
 
 .present {
-  background-color: #ff6961;
+  background-color: var(--CurrentColor);
   color: white;
 }
 
 #PresentColor {
-  background-color: #ff6961;
+  background-color: var(--CurrentColor);
   color: white;
   width: 200px;
 }
 
 .future {
-  background-color: #77dd77;
+  background-color: var(--FutureColor);
   color: white;
 }
 
 #FutureColor {
-  background-color: #77dd77;
+  background-color: var(--FutureColor);
   color: white;
   width: 200px;
 }
@@ -72,7 +80,7 @@ textarea {
   border-left: 1px solid black;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: #06aed5;
+  background-color: var(--AccentColor);
   color: white;
 }
 
