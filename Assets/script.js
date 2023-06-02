@@ -40,10 +40,13 @@ $(document).ready(function () {
 
       // check if we've moved past this time
       if (blockHour < currentHour) {
+        $(this).removeClass("present");
+        $(this).removeClass("future");
         $(this).addClass("past");
         console.log("updated to past");
       } else if (blockHour === currentHour) {
         $(this).removeClass("past");
+        $(this).removeClass("future");
         $(this).addClass("present");
         console.log("updated to present");
       } else {
