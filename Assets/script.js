@@ -5,7 +5,7 @@ $(document).ready(function () {
   var dayEl = $("#currentDay");
   var notifyEl = $("#notify");
   var presentEl = $(".past");
-  var timeBlockEl = $(".time-block")
+  // var timeBlockEl = $(".time-block");
 
   // Show current day on top of page
   $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY"));
@@ -15,26 +15,45 @@ $(document).ready(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-$(".saveBtn").on("click", function() {
-var meetingText = $(this).siblings('.description').val();
-var time = $(this).parent().attr("id");
+  $(".saveBtn").on("click", function () {
+    var meetingText = $(this).siblings(".description").val();
+    var time = $(this).parent().attr("id");
 
-localStorage.setItem(meetingText, time);
-// Show the "Meeting Saved!" Alert for 4 seconds, then remove it
-setTimeout (function() {
-$(".notification").removeClass("show");
-}, 4000);
+    localStorage.setItem(meetingText, time);
+    // Show the "Meeting Saved!" Alert for 4 seconds, then remove it
+    setTimeout(function () {
+      $(".notification").removeClass("show");
+    }, 4000);
+  });
 
-});
+ function hourUpdater() {
+   var currentHour = dayjs().hour();
+   var timeBlockEl = document.getElementsByClassName("time-block");
 
-function hourUpdate() {
-  var currentHour = 
-  
-}
+   for (var i = 0; i < timeBlockEl.length; i++) {
+     var blockHour = parseInt(timeBlockEl[i].id.split("-")[1]);
 
+     console.log("currentHour");
 
+     // Update class (past, present, future) if needed
+     if (blockHour < currentHour) {
+       $(timeBlockEl[i]).addClass("past");
+     } else if (blockHour === currentHour) {
+       $(timeBlockEl[i]).removeClass("past");
+       $(timeBlockEl[i]).addClass("present");
+     } else {
+       $(timeBlockEl[i]).removeClass("past");
+       $(timeBlockEl[i]).removeClass("present");
+       $(timeBlockEl[i]).addClass("future");
+     }
+   }
+ }
 
-  
+ hourUpdater();
+
+//  Calls the hourUpdater function to run every 30 seconds
+setInterval(hourUpdater, 30000);
+
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
