@@ -5,6 +5,7 @@ $(document).ready(function () {
   var dayEl = $("#currentDay");
   var notifyEl = $("#notify");
   var presentEl = $(".past");
+  var timeBlockEl = $(".time-block")
 
   // Show current day on top of page
   $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY"));
@@ -14,6 +15,24 @@ $(document).ready(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
+$(".saveBtn").on("click", function() {
+var meetingText = $(this).siblings('.description').val();
+var time = $(this).parent().attr("id");
+
+localStorage.setItem(meetingText, time);
+// Show the "Meeting Saved!" Alert for 4 seconds, then remove it
+setTimeout (function() {
+$(".notification").removeClass("show");
+}, 4000);
+
+});
+
+function hourUpdate() {
+  var currentHour = 
+  
+}
+
+
 
   
   // TODO: Add code to apply the past, present, or future class to each time
