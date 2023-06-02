@@ -10,58 +10,56 @@ $(document).ready(function () {
   // Show current day on top of page
   $("#currentDay").text(dayjs().format("dddd, MMMM D, YYYY"));
 
-  // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in local storage. HINT: What does `this` reference in the click listener
-  // function? How can DOM traversal be used to get the "hour-x" id of the
-  // time-block containing the button that was clicked? How might the id be
-  // useful when saving the description in local storage?
+  // Event Listener to save text from events created when "save" is clicked
   $(".saveBtn").on("click", function () {
     var meetingText = $(this).siblings(".description").val();
     var time = $(this).parent().attr("id");
 
-    localStorage.setItem(meetingText, time);
-    // Show the "Meeting Saved!" Alert for 4 seconds, then remove it
+    localStorage.setItem(time, meetingText);
+
+    // Show the "Meeting Saved!" Alert immediately
+    $(".notification").removeClass("hide");
+    $(".notification").addClass("show");
+
+    // Remove the "Meeting Saved!" Alert after 4 seconds
     setTimeout(function () {
       $(".notification").removeClass("show");
-    }, 4000);
+      $(".notification").addClass("hide");
+    }, 3000);
   });
 
- function hourUpdater() {
-   var currentHour = dayjs().hour();
-   var timeBlockEl = document.getElementsByClassName("time-block");
+  // Using DayJS to update the time for us
+  function hourUpdater() {
+    // get current number of hours
+    var currentHour = dayjs().hour();
+    console.log(currentHour);
 
-   for (var i = 0; i < timeBlockEl.length; i++) {
-     var blockHour = parseInt(timeBlockEl[i].id.split("-")[1]);
+    // loop over time blocks
+    $(".time-block").each(function () {
+      var blockHour = parseInt($(this).attr("id").split("-")[1]);
 
-     console.log("currentHour");
+      // check if we've moved past this time
+      if (blockHour < currentHour) {
+        $(this).addClass("past");
+        console.log("updated to past");
+      } else if (blockHour === currentHour) {
+        $(this).removeClass("past");
+        $(this).addClass("present");
+        console.log("updated to present");
+      } else {
+        $(this).removeClass("past");
+        $(this).removeClass("present");
+        $(this).addClass("future");
+        console.log("updated to future");
+      }
+    });
+  }
 
-     // Update class (past, present, future) if needed
-     if (blockHour < currentHour) {
-       $(timeBlockEl[i]).addClass("past");
-     } else if (blockHour === currentHour) {
-       $(timeBlockEl[i]).removeClass("past");
-       $(timeBlockEl[i]).addClass("present");
-     } else {
-       $(timeBlockEl[i]).removeClass("past");
-       $(timeBlockEl[i]).removeClass("present");
-       $(timeBlockEl[i]).addClass("future");
-     }
-   }
- }
+  //  Calls the hourUpdater function to run every 30 seconds
+  hourUpdater();
+  setInterval(hourUpdater, 30000);
 
- hourUpdater();
-
-//  Calls the hourUpdater function to run every 30 seconds
-setInterval(hourUpdater, 30000);
-
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-
-  // Grab the localStorage for each hour and display to page when user comes back
+  // Grab the localStorage for each hour and display to page when user comes back / refreshes
   $("#hour-9 .description").val(localStorage.getItem("hour-9"));
   $("#hour-10 .description").val(localStorage.getItem("hour-10"));
   $("#hour-11 .description").val(localStorage.getItem("hour-11"));
